@@ -16,7 +16,7 @@ class GetSingleResource extends Simulation {
     )
     .pause(1)
 
-  //users goes during 5 sec
+  //Open model : Injects a given number of users distributed evenly on a time window of a given duration.
   setUp(scn.inject(rampUsers(100).during(5)).protocols(httpProtocol))
 
 }

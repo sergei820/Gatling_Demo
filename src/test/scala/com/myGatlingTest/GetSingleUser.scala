@@ -16,13 +16,8 @@ class GetSingleUser extends Simulation {
     )
     .pause(1)
 
-  //Gatling has support for two models (Open & Closed) for user injection.
-  // The Open model is mainly focused on controlling arrival rate of the users inside the system.
-  // The closed model controls concurrency of the users connected to the system.
+  // Open model : Injects users at a constant rate, defined in users per second, during a given duration.
+  // Users will be injected at randomized intervals
+  setUp(scn.inject(constantUsersPerSec(100).during(10).randomized).protocols(httpProtocol))
 
-  //all users goes at once
-  //setUp(scn.inject(atOnceUsers(10)).protocols(httpProtocol))
-
-  //users goes during 5 sec
-  setUp(scn.inject(rampUsers(100).during(5)).protocols(httpProtocol))
 }

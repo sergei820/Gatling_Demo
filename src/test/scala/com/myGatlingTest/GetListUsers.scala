@@ -15,7 +15,7 @@ class GetListUsers extends Simulation {
     )
     .pause(1)
 
-  //all users goes at once
-  setUp(scn.inject(atOnceUsers(50)).protocols(httpProtocol))
+  //Closed model : Inject so that number of concurrent users in the system ramps linearly from a number to another
+  setUp(scn.inject(rampConcurrentUsers(50).to(100).during(20)).protocols(httpProtocol))
 
 }

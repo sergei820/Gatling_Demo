@@ -15,6 +15,7 @@ class GetSingleUserNotFound extends Simulation {
     )
     .pause(1)
 
-  setUp(scn.inject(rampUsers(100).during(5)).protocols(httpProtocol))
+  //Open model : Injects a given number of users at once
+  setUp(scn.inject(atOnceUsers(500)).protocols(httpProtocol))
 
 }
