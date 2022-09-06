@@ -3,7 +3,12 @@ package com.myGatlingTest
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
+import scala.concurrent.duration.{Duration, FiniteDuration, SECONDS}
+
 class GetSingleUser extends Simulation {
+
+  val testDuration = FiniteDuration(Duration(System.getProperty("testDuration")).toSeconds, SECONDS)
+  val userCount = System.getProperty("userCount").toDouble
 
   val httpProtocol = http
     .baseUrl("https://reqres.in/api/users")
@@ -16,8 +21,9 @@ class GetSingleUser extends Simulation {
     )
     .pause(1)
 
+
   // Open model : Injects users at a constant rate, defined in users per second, during a given duration.
   // Users will be injected at randomized intervals
-  setUp(scn.inject(constantUsersPerSec(100).during(10).randomized).protocols(httpProtocol))
+  setUp(scn.inject(constantUsersPerSec(userCount).during(5).randomized).protocols(httpProtocol))
 
 }

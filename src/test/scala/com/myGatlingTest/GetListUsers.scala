@@ -5,6 +5,8 @@ import io.gatling.http.Predef._
 
 class GetListUsers extends Simulation {
 
+  val feeder = csv("data/data.csv").random
+
   val httpProtocol = http
     .baseUrl("https://reqres.in/api/users")
 
