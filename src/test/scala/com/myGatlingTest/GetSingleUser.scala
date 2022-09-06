@@ -3,8 +3,6 @@ package com.myGatlingTest
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
-import scala.concurrent.duration.{Duration, FiniteDuration, SECONDS}
-
 class GetSingleUser extends Simulation {
 
   //val testDuration = FiniteDuration(Duration(System.getProperty("testDuration")).toSeconds, SECONDS)
