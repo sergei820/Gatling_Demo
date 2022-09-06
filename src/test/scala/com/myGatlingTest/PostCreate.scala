@@ -27,7 +27,8 @@ class PostCreate extends Simulation {
  .stripMargin))
     .check(
       status.is(201),
-      jsonPath("$.name") is "Sergei"
+      jsonPath("$.name") is "Sergei",
+      jsonPath("$.job") is "Software Test Automation Engineer"
     ))
   .pause(1)
 
